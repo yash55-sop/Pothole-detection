@@ -1,0 +1,71 @@
+{
+  "source": "https://github.com/jaygala24/pothole-detection",
+  "download_url": "https://github.com/jaygala24/pothole-detection/releases/download/v1.0.0/Pothole.Dataset.IVCNZ.zip",
+  "sample_seed": 42,
+  "candidate_image_count": 1243,
+  "sample_image_count": 10,
+  "archive_sha256": null,
+  "limitation": "Public dataset sample; overlap with pretrained model training data is unknown. Not a verified independent held-out benchmark.",
+  "files": [
+    {
+      "archive_image": "Pothole Dataset/img-1044.jpg",
+      "archive_label": "Pothole Dataset/img-1044.txt",
+      "images_sha256": "deb085d9ea1819cf1ebe724d9fcd57d5bd8492540d4f33ec47e949d4512d4a73",
+      "labels_sha256": "fe8aee49df1a3c5f05506564fbd1270275662ab37b3429d289f6930494322cc9"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-1159.jpg",
+      "archive_label": "Pothole Dataset/img-1159.txt",
+      "images_sha256": "e00d672a2aded26acc72d83ac8e85bd278e97591cc15389ee8e981067ce14d38",
+      "labels_sha256": "a49e5e9b4fb0154b04d494cc5baf8f60cd33aeab6e969538f81d576dc8e2968d"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-1187.jpg",
+      "archive_label": "Pothole Dataset/img-1187.txt",
+      "images_sha256": "a1c99d5a69dba40498f04d2c9de30afc571db7cb6e203b64dfa45dd4c30c7a93",
+      "labels_sha256": "abc3b0505495bb2cd48e1520030878aa19fdd6ab291da1716a90bd1d308ffff5"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-1203.jpg",
+      "archive_label": "Pothole Dataset/img-1203.txt",
+      "images_sha256": "f851884820ad2170e056d72780bed8c4388f19e53dd5af203a0a57dc31dd6bc8",
+      "labels_sha256": "f80efcf395f702d0ad23aa4345929f67f0eb966943c9d1f4521fe501a6886c5e"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-136.jpg",
+      "archive_label": "Pothole Dataset/img-136.txt",
+      "images_sha256": "208a9722156cc535af5bca710416f880c4e045328c9df9f1e5e8d113697dd912",
+      "labels_sha256": "eb14d9f7f43b33bace37da7c8e847126e34dc5328f5a644d10a3cb3c8aec1bb8"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-291.jpg",
+      "archive_label": "Pothole Dataset/img-291.txt",
+      "images_sha256": "121163840225becc85d34f902f3a2ac5a3d7352c77ee5262362097ef3d58162a",
+      "labels_sha256": "c1d9594065ee1a652c6b6bf527ba573de54b983de797e4bf56ca3f946559381c"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-330.jpg",
+      "archive_label": "Pothole Dataset/img-330.txt",
+      "images_sha256": "87f2f8f7cbbc34841d915add70a3dcb1b77f609a767cf5d144e893725f7e189a",
+      "labels_sha256": "138275c81fad901f18d23b38ee3bf5938c078ccc3bfa0c1dcf2e783a3c584bd0"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-387.jpg",
+      "archive_label": "Pothole Dataset/img-387.txt",
+      "images_sha256": "cdd765bb4d16bc05e50bb81aba921eb85f75871266b137e46ac4e24742a2faba",
+      "labels_sha256": "dcd6cf12f7b17602d12844f2251b0f88eb50f5851b37e0e242fdea96e8591c6e"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-885.jpg",
+      "archive_label": "Pothole Dataset/img-885.txt",
+      "images_sha256": "ac788b0fd85d7d295c64a1912d7ff72a5f7a2ddf69928395461c032836655492",
+      "labels_sha256": "883d5e84e666ff676a3eff694d577fbb8930ec89d5baa62e59fe0b32f04be409"
+    },
+    {
+      "archive_image": "Pothole Dataset/img-969.jpg",
+      "archive_label": "Pothole Dataset/img-969.txt",
+      "images_sha256": "e7e9cdb44a0ae9225d3d6cc02d0bbc13f838c2087bf61d7df126a1274318aa3b",
+      "labels_sha256": "1729593f7cfce4040daa98ae0e4b03d30081da67aed7ecd46b4df9b568ba3f14"
+    }
+  ]
+}

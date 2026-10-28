@@ -1,0 +1,106 @@
+{
+  "model": "Custom CNN trained from scratch",
+  "split_seed": 42,
+  "splits": {
+    "train": [
+      "img-1159.jpg",
+      "img-1044.jpg",
+      "img-136.jpg",
+      "img-969.jpg",
+      "img-1104.jpg",
+      "img-1082.jpg",
+      "img-1203.jpg",
+      "img-1085.jpg",
+      "img-1115.jpg",
+      "img-1187.jpg",
+      "img-1003.jpg",
+      "img-1100.jpg",
+      "img-387.jpg",
+      "img-1047.jpg",
+      "img-1078.jpg",
+      "img-101.jpg"
+    ],
+    "val": [
+      "img-885.jpg",
+      "img-1033.jpg",
+      "img-291.jpg",
+      "img-1053.jpg"
+    ],
+    "test": [
+      "img-1057.jpg",
+      "img-10.jpg",
+      "img-1019.jpg",
+      "img-330.jpg"
+    ]
+  },
+  "epochs": 30,
+  "best_epoch": 7,
+  "parameters": 185941,
+  "model_sha256": "e313369f9b113d15672d965692c3cb30e6fd86d9b30c53747a003a63629f34ee",
+  "confidence_threshold": 0.25,
+  "threshold_selection": "Previously selected for bounding-box F1 on validation set; retained for image-level evaluation",
+  "validation": {
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "tn": 0,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "specificity": null,
+    "images": [
+      {
+        "image": "img-885.jpg",
+        "actual": true,
+        "predicted": true
+      },
+      {
+        "image": "img-1033.jpg",
+        "actual": true,
+        "predicted": true
+      },
+      {
+        "image": "img-291.jpg",
+        "actual": true,
+        "predicted": true
+      },
+      {
+        "image": "img-1053.jpg",
+        "actual": true,
+        "predicted": true
+      }
+    ]
+  },
+  "limitation": "The test set is small and contains no negative images; false-positive behavior cannot be measured.",
+  "evaluation_type": "image-level pothole presence",
+  "tp": 4,
+  "fp": 0,
+  "fn": 0,
+  "tn": 0,
+  "accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "specificity": null,
+  "images": [
+    {
+      "image": "img-1057.jpg",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "image": "img-10.jpg",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "image": "img-1019.jpg",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "image": "img-330.jpg",
+      "actual": true,
+      "predicted": true
+    }
+  ]
+}

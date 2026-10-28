@@ -1,42 +1,65 @@
-"""A small, CPU-only demo using the supplied pothole-trained weights."""
+"""CPU-only pothole detection with a small custom model."""
 
 import hashlib
+import json
 from io import BytesIO
-import os
 from pathlib import Path
 import warnings
 
 from PIL import Image, ImageOps
 import streamlit as st
 
-MODEL_PATH = Path(__file__).resolve().parent / "models" / "best.pt"
+ROOT = Path(__file__).resolve().parent
 MAX_IMAGE_SIDE = 1600
 
-# Keep inference local: do not let Ultralytics install optional packages at runtime.
-os.environ["YOLO_AUTOINSTALL"] = "false"
-
-
 @st.cache_resource
-def load_model():
-    # Check the file first so YOLO cannot silently download another model.
-    if not MODEL_PATH.is_file():
-        raise FileNotFoundError("Run python download_model.py to create models/best.pt.")
-    from ultralytics import YOLO
-
-    model = YOLO(str(MODEL_PATH))
-    names = model.names
-    items = names.items() if isinstance(names, dict) else enumerate(names)
-    pothole_ids = [int(i) for i, name in items if str(name).strip().lower() in {"pothole", "potholes"}]
-    if model.task != "detect" or not pothole_ids:
-        raise ValueError(f"Expected pothole detection weights; model.names = {names!r}.")
-    return model, pothole_ids
+def load_model(model_name, model_hash):
+    import torch
+    if model_name == "YOLOv8 (pretrained)":
+        from yolo_model import load_yolo
+        return load_yolo(ROOT / "models" / "best.pt")
+    from tiny_detector import TinyDetector
+    torch.set_num_threads(1)
+    model = TinyDetector()
+    model.load_state_dict(torch.load(ROOT / "models" / "tiny_detector.pt", map_location="cpu", weights_only=True))
+    model.eval()
+    return model
 
 
 st.set_page_config(page_title="Pothole Detection", layout="centered")
 st.title("Pothole Detection")
 st.write("Upload a road image to detect potholes.")
+model_name = "YOLOv8 (pretrained)"
+is_yolo = model_name == "YOLOv8 (pretrained)"
+model_path = ROOT / "models" / ("best.pt" if is_yolo else "tiny_detector.pt")
+report_path = ROOT / "evaluation_results" / ("yolo_test.json" if is_yolo else "tiny_test.json")
+
+default_confidence = 0.35 if is_yolo else 0.25
+model_hash = None
+with st.expander("Evaluation"):
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        model_hash = hashlib.sha256(model_path.read_bytes()).hexdigest()
+        if model_hash != report["model_sha256"]:
+            raise ValueError("Evaluation does not match the current model weights.")
+        default_confidence = float(report["confidence_threshold"])
+        counts = {key: len(report["splits"][key]) for key in ("train", "val", "test")}
+        if is_yolo:
+            st.write(f"Pretrained YOLOv8 evaluated on {counts['test']} test images. Overlap with its original training data is unknown.")
+        else:
+            st.write(f"Your model was trained on {counts['train']} images, validated on {counts['val']}, and tested on {counts['test']} held-out images.")
+        columns = st.columns(2)
+        for column, label, key in zip(columns, ("Precision", "Recall"), ("precision", "recall")):
+            value = report[key]
+            column.metric(label, f"{value:.1%}" if value is not None else "N/A")
+        st.caption(f"Presence or absence per test image, at confidence {default_confidence:.2f}.")
+        if report['tn'] + report['fp'] == 0:
+            st.warning("All test images contain potholes. This test cannot measure false alarms on images without potholes.")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        st.info(f"Evaluation unavailable. Run python {'evaluate_yolo.py' if is_yolo else 'train_model.py'}. Details: {exc}")
+
 upload = st.file_uploader("Road image", type=["jpg", "jpeg", "png"])
-confidence = st.slider("Confidence threshold", 0.05, 0.95, 0.35, 0.05)
+confidence = default_confidence
 
 if upload is None:
     st.session_state.pop("detection", None)
@@ -63,51 +86,39 @@ st.image(image, caption="Uploaded image", width="stretch")
 if image.size != original_size:
     st.caption(f"Resized to {image.width} × {image.height} pixels to reduce memory use.")
 
-# Clear old results when the upload or threshold changes; downloading never reruns YOLO.
-input_key = (hashlib.sha256(image_bytes).hexdigest(), confidence)
-if st.session_state.get("detection", {}).get("key") != input_key:
+# Clear old results when the upload or threshold changes.
+input_key = (hashlib.sha256(image_bytes).hexdigest(), confidence, model_name, model_hash)
+if st.session_state.get("detection", {}).get("key") != input_key or "present" not in st.session_state.get("detection", {}):
     st.session_state.pop("detection", None)
 
 if st.button("Detect Potholes", type="primary"):
     st.session_state.pop("detection", None)
     try:
-        model, pothole_ids = load_model()
+        model = load_model(model_name, model_hash)
     except Exception as exc:
         st.error(
-            "Cannot load the pothole model. Check dependencies with "
-            "python -m pip install -r requirements.txt. If the weights are corrupt or incorrect, "
-            "remove models/best.pt and run python download_model.py again. "
+            "Cannot load the selected model. Check its weights and install dependencies with "
+            "python -m pip install -r requirements.txt. "
             f"Details: {exc}"
         )
     else:
         try:
             with st.spinner("Detecting potholes on CPU…"):
-                result = model.predict(
-                    source=image, conf=confidence, classes=pothole_ids,
-                    device="cpu", imgsz=416, verbose=False, save=False,
-                )[0]
-                # Filter again so both the count and annotation contain only potholes.
-                if result.boxes is not None:
-                    keep = [int(c) in pothole_ids for c in result.boxes.cls.tolist()]
-                    result = result[[i for i, matches in enumerate(keep) if matches]]
-                count = len(result.boxes) if result.boxes is not None else 0
-                # YOLO plot() returns BGR; Pillow and Streamlit expect RGB.
-                annotated = Image.fromarray(result.plot(conf=True, labels=True)[:, :, ::-1])
-                output = BytesIO()
-                annotated.save(output, format="PNG")
+                if is_yolo:
+                    from yolo_model import pothole_present
+                    present = pothole_present(model, image, confidence)
+                else:
+                    from tiny_detector import predict
+                    present = bool(predict(model, image, confidence))
                 st.session_state["detection"] = {
-                    "key": input_key, "png": output.getvalue(), "count": count,
+                    "key": input_key, "present": present,
                 }
         except Exception as exc:
             st.error(f"Detection failed. Try a smaller image or restart the app. Details: {exc}")
 
 if "detection" in st.session_state:
     detection = st.session_state["detection"]
-    st.image(detection["png"], caption="Detected potholes", width="stretch")
-    st.write(f"Total potholes detected: {detection['count']}")
-    if detection["count"] == 0:
-        st.info("No potholes detected at this threshold.")
-    st.download_button(
-        "Download annotated image", data=detection["png"],
-        file_name="potholes_detected.png", mime="image/png",
-    )
+    if detection["present"]:
+        st.write("Pothole detected: Yes")
+    else:
+        st.write("Pothole detected: No")

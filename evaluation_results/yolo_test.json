@@ -1,0 +1,68 @@
+{
+  "model": "Pretrained YOLOv8",
+  "evaluation_type": "image-level pothole presence",
+  "splits": {
+    "train": [
+      "img-1159.jpg",
+      "img-1044.jpg",
+      "img-136.jpg",
+      "img-969.jpg",
+      "img-1104.jpg",
+      "img-1082.jpg",
+      "img-1203.jpg",
+      "img-1085.jpg",
+      "img-1115.jpg",
+      "img-1187.jpg",
+      "img-1003.jpg",
+      "img-1100.jpg",
+      "img-387.jpg",
+      "img-1047.jpg",
+      "img-1078.jpg",
+      "img-101.jpg"
+    ],
+    "val": [
+      "img-885.jpg",
+      "img-1033.jpg",
+      "img-291.jpg",
+      "img-1053.jpg"
+    ],
+    "test": [
+      "img-1057.jpg",
+      "img-10.jpg",
+      "img-1019.jpg",
+      "img-330.jpg"
+    ]
+  },
+  "model_sha256": "182ecf8a90c968fb21569c1c3e5457ed8d4117460f3c9bffda3ea0725d39ec15",
+  "confidence_threshold": 0.35,
+  "tp": 3,
+  "fp": 0,
+  "fn": 1,
+  "tn": 0,
+  "precision": 1.0,
+  "recall": 0.75,
+  "accuracy": 0.75,
+  "images": [
+    {
+      "image": "img-1057.jpg",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "image": "img-10.jpg",
+      "actual": true,
+      "predicted": false
+    },
+    {
+      "image": "img-1019.jpg",
+      "actual": true,
+      "predicted": true
+    },
+    {
+      "image": "img-330.jpg",
+      "actual": true,
+      "predicted": true
+    }
+  ],
+  "limitation": "Small held-out sample; overlap with pretrained training data is unknown."
+}

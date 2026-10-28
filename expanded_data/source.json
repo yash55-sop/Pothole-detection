@@ -1,0 +1,126 @@
+{
+  "source": "https://github.com/jaygala24/pothole-detection",
+  "description": "24 labeled images: existing 10-image seed-42 sample plus successfully retrieved initial image/label pairs from an interrupted 160-image seed-42 sample. This partial selection is not random and is biased by archive filename order.",
+  "files": [
+    {
+      "image": "img-10.jpg",
+      "image_sha256": "cf7038981864142a0d2fce14e07f6ff6a3a6e13a7815c82921bf2b6e529bbabb",
+      "label_sha256": "a2efc0d4dc8fd2aa8f09dade6f52928fc1cadeeb1a490c8463783ca48f4409ca"
+    },
+    {
+      "image": "img-1003.jpg",
+      "image_sha256": "16e64a975bf5bec63418dea8fa11aaa53df4ab522e1b7de0f8d2a9fca6f7fa12",
+      "label_sha256": "15991017cc6ec5154626156fb2bfb95a4b18fd58e6fffa4ecb8e338a68cbb0ff"
+    },
+    {
+      "image": "img-101.jpg",
+      "image_sha256": "b371e2b5c9675307bf42ccaf9dd1e7180909257941e8ab57f3d7dd304a7dc649",
+      "label_sha256": "4c918448834b16414a89dcd3d8419c837e6255d616dd348347f840273ac0791d"
+    },
+    {
+      "image": "img-1019.jpg",
+      "image_sha256": "b2fcfd88adae62d10e1f5c101304da03e19945f84f094b8bd3b640ae867aa0c5",
+      "label_sha256": "5b2b6e95a8f62dec25e4c364ba8b6cf75d6e9ef15f4de9ac3ff2562aedb65859"
+    },
+    {
+      "image": "img-1033.jpg",
+      "image_sha256": "11a1bee79792abdcb345e71f7cfa20b938a79f1ed969e329928e780876681411",
+      "label_sha256": "116538a58e51be41b0ffab21f539c90e7b673b2748ae58d56a8ef82653b03ac7"
+    },
+    {
+      "image": "img-1044.jpg",
+      "image_sha256": "deb085d9ea1819cf1ebe724d9fcd57d5bd8492540d4f33ec47e949d4512d4a73",
+      "label_sha256": "fe8aee49df1a3c5f05506564fbd1270275662ab37b3429d289f6930494322cc9"
+    },
+    {
+      "image": "img-1047.jpg",
+      "image_sha256": "8af7b568276a0c0d003d949ebe036e816c43a5efa41f88657ad6795a96b416d6",
+      "label_sha256": "144c22ca61ced172d517bf3d9f2468e2e0a5b65c0a938bf3d89e0983e5780217"
+    },
+    {
+      "image": "img-1053.jpg",
+      "image_sha256": "ab3ab9a3974fa2333d596cc7f3506fbda6015548096fca43b7f1e22e7d2deeda",
+      "label_sha256": "370568f9d97a9431d12c2d75bcac145cd8013ddf495715e6b10760ddf224bd1d"
+    },
+    {
+      "image": "img-1057.jpg",
+      "image_sha256": "9112d2a6ed7d176185609e1492968af3e375a637dda95b6835d70d57f813baad",
+      "label_sha256": "c02731a4922e150c7f8bdf0595d510dcb750ae31802a4099a6c6dfbfa0212696"
+    },
+    {
+      "image": "img-1078.jpg",
+      "image_sha256": "840ea306ca418e8edc36eb30d3a3a53c8698ba790bb564ef83b58f91c2340806",
+      "label_sha256": "76fa8f7bda2c07c5179750e2cf7380831b7836aa3749b5fcc6bda5d622aeaca3"
+    },
+    {
+      "image": "img-1082.jpg",
+      "image_sha256": "185be88966883f6199047100f59c52eda846e261f5bfdf9b2e3b25067d6d9e55",
+      "label_sha256": "4ea675084f6442ea87c7dd70b530989e8499d08cd7c76cabe86ddbd575733652"
+    },
+    {
+      "image": "img-1085.jpg",
+      "image_sha256": "2e3d38a8f63d4fa5a3b8171a6c98f91db0328ccc8065383dcf31166d171e9d22",
+      "label_sha256": "8a7f47eb40a1f75144341da4fae42ef559dc013bb6015bd45b3747b9cdfda1e1"
+    },
+    {
+      "image": "img-1100.jpg",
+      "image_sha256": "b59295deb6d316dc5e6366e6fa07b90dc2de16510a05916e9f8fa5f63fe0bcba",
+      "label_sha256": "2496e01cceda9173149f8a0e8f8bcfa1c9f06d8e327bb6a55b5d7630b1e89a59"
+    },
+    {
+      "image": "img-1104.jpg",
+      "image_sha256": "8647e09cd0c0ade6f2a76430180d8378b1eacdbf1142f4497c25bc1462272a6a",
+      "label_sha256": "b2e83766679fcdcf2c25515d59e3a86516cd71df38e3c2d5efd8d7b2a5561607"
+    },
+    {
+      "image": "img-1115.jpg",
+      "image_sha256": "4e8cd8a2cf39f2815a02b32c7fc9c0bcb54e4aa24bf5533ca09ce3433e736c5b",
+      "label_sha256": "7e950b99fc53d73537c13d3a7047e1757abe9c8828d03bb5ebac81ee422ad90b"
+    },
+    {
+      "image": "img-1159.jpg",
+      "image_sha256": "e00d672a2aded26acc72d83ac8e85bd278e97591cc15389ee8e981067ce14d38",
+      "label_sha256": "a49e5e9b4fb0154b04d494cc5baf8f60cd33aeab6e969538f81d576dc8e2968d"
+    },
+    {
+      "image": "img-1187.jpg",
+      "image_sha256": "a1c99d5a69dba40498f04d2c9de30afc571db7cb6e203b64dfa45dd4c30c7a93",
+      "label_sha256": "abc3b0505495bb2cd48e1520030878aa19fdd6ab291da1716a90bd1d308ffff5"
+    },
+    {
+      "image": "img-1203.jpg",
+      "image_sha256": "f851884820ad2170e056d72780bed8c4388f19e53dd5af203a0a57dc31dd6bc8",
+      "label_sha256": "f80efcf395f702d0ad23aa4345929f67f0eb966943c9d1f4521fe501a6886c5e"
+    },
+    {
+      "image": "img-136.jpg",
+      "image_sha256": "208a9722156cc535af5bca710416f880c4e045328c9df9f1e5e8d113697dd912",
+      "label_sha256": "eb14d9f7f43b33bace37da7c8e847126e34dc5328f5a644d10a3cb3c8aec1bb8"
+    },
+    {
+      "image": "img-291.jpg",
+      "image_sha256": "121163840225becc85d34f902f3a2ac5a3d7352c77ee5262362097ef3d58162a",
+      "label_sha256": "c1d9594065ee1a652c6b6bf527ba573de54b983de797e4bf56ca3f946559381c"
+    },
+    {
+      "image": "img-330.jpg",
+      "image_sha256": "87f2f8f7cbbc34841d915add70a3dcb1b77f609a767cf5d144e893725f7e189a",
+      "label_sha256": "138275c81fad901f18d23b38ee3bf5938c078ccc3bfa0c1dcf2e783a3c584bd0"
+    },
+    {
+      "image": "img-387.jpg",
+      "image_sha256": "cdd765bb4d16bc05e50bb81aba921eb85f75871266b137e46ac4e24742a2faba",
+      "label_sha256": "dcd6cf12f7b17602d12844f2251b0f88eb50f5851b37e0e242fdea96e8591c6e"
+    },
+    {
+      "image": "img-885.jpg",
+      "image_sha256": "ac788b0fd85d7d295c64a1912d7ff72a5f7a2ddf69928395461c032836655492",
+      "label_sha256": "883d5e84e666ff676a3eff694d577fbb8930ec89d5baa62e59fe0b32f04be409"
+    },
+    {
+      "image": "img-969.jpg",
+      "image_sha256": "e7e9cdb44a0ae9225d3d6cc02d0bbc13f838c2087bf61d7df126a1274318aa3b",
+      "label_sha256": "1729593f7cfce4040daa98ae0e4b03d30081da67aed7ecd46b4df9b568ba3f14"
+    }
+  ]
+}
